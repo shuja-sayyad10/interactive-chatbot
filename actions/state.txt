@@ -1,0 +1,17 @@
+In this highly competitive business environment, businesses are constantly seeking ways to gain traction and understand what is on the minds of current customers and potential customers in order to increase business efficiency. Many companies, such as American Express have turned to business intelligence (BI) and data analytics to maintain a competitive edge over the competition. In this paper, the author will define data analytics and provide a brief overview of the evolution of data analytics in business. Additionally, the author will identify both advantages and disadvantages of using data analytics within American Express. Furthermore, the author will determine the fundamental obstacles or challenges that business management in…show more content
+data harmonization
+data migration
+data transformation
+
+def g():
+  global big
+  big = file('big.txt').read()
+  N = len(big)
+  s = set()
+  for i in xrange(6, N):
+    c = big[i]
+    if ord(c) > 127 and c not in s:
+        print i, c, ord(c), big[max(0, i-10):min(N, i+10)]
+        s.add(c)
+  print s
+  print [ord(c) for c in s]

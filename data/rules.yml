@@ -1,0 +1,203 @@
+version: "3.1"
+
+rules:
+
+# - rule: Say 'I am a bot' anytime the user challenges
+#   steps:
+#   - intent: bot_challenge
+#   - action: utter_iamabot
+- rule: greet
+  steps:
+  - intent: greet
+  - action: utter_options   
+  
+- rule: Activate form
+  steps:
+  - intent: inform_form_details
+  - action: utter_bot_will_ask  
+  - action: user_details_form
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact    
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form
+  steps:
+  # Form is deactivated
+  - action: user_details_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_confirm_details
+  # Send a mail to user
+  #- action: action_email
+  #- action: action_reset_all_slots  
+  - action: utter_yes_or_no_for_details
+  # Reset slots
+  #- action: action_reset_all_slots
+ 
+- rule: Example of an unhappy path
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form 
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - action: action_custom_default_fallback
+  - action: utter_correct_details
+  # Return to form after handling the `chitchat` intent
+  - action: user_details_form  
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact  
+
+- rule: Exmaple of chitchat path
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form 
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - intent: chitchat
+  - action: utter_chitchat
+  # Return to form after handling the `chitchat` intent
+  - action: user_details_form  
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact  
+  
+- rule: if details are correct
+  steps:
+  - intent: inform_affirm
+  - action: action_add_to_db
+  - action: utter_will_contact
+#  - action: utter_pilog_services_and_products  
+
+- rule: if details are not correct
+  steps:
+  - intent: inform_deny
+  - action: action_reset_all_slots  
+  - action: user_details_form  
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact  
+
+- rule: know about ETL
+  steps:
+  - intent: inform_etl
+  - action: utter_etl
+
+- rule: know about smart bi
+  steps:
+  - intent: inform_bi 
+  - action: utter_smart_bi
+  
+- rule: know about smart bi and etl
+  steps:
+  - intent: inform_etl_and_bi
+  - action: utter_smart_bi_and_etl  
+  
+- rule: low intent classification
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+  
+- rule: tell info about the smart bi features asked
+  steps:
+  - intent: ask_smart_bi
+  - action: action_tell_bi_info #change
+  
+- rule: chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+  
+- rule: mail interjections
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form
+  steps:
+  # Form is deactivated
+  - action: user_details_form
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: email
+  - intent: explain
+  - action: utter_explain_mail
+  - action: user_details_form  
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact     
+   
+- rule: contact interjections
+  condition:
+  # Condition that form is active.
+  - active_loop: user_details_form
+  steps:
+  # Form is deactivated
+  - action: user_details_form
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: contact
+  - intent: explain
+  - action: utter_explain_contact
+  - action: user_details_form  
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - requested_slot: GPE    
+  - slot_was_set:
+    - requested_slot: contact  
+    
+- rule: etl choices
+  steps:
+  - intent: inform_etl_choice
+  - action: action_tell_etl_choice # change
+
+- rule: etl and smart bi choices
+  steps:
+  - intent: ask_smart_bi_etl
+  - action: action_tell_etl_bi_choice #change    
+# - rule: Implementation of the Two-Stage-Fallback
+#   steps:
+#   - intent: nlu_fallback
+#   - action: action_two_stage_fallback
+#   - active_loop: action_two_stage_fallback    
+  
+  
+# - rule: anything random in the beginning
+#   steps:

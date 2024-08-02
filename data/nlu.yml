@@ -1,0 +1,328 @@
+version: "3.1"
+nlu:
+# - lookup: 
+   
+- lookup: GPE
+  examples: |
+    - Afghanistan
+    - Albania
+    - Algeria
+    - Andorra
+    - Angola
+    - Antigua & Deps
+    - Argentina
+    - Armenia
+    - Australia
+    - Austria
+    - Azerbaijan
+    - Bahamas
+    - Bahrain
+    - Bangladesh
+    - Barbados
+    - Belarus
+    - Belgium
+    - Belize
+    - Benin
+    - Bhutan
+    - Bolivia
+    - Bosnia Herzegovina
+    - Botswana
+    - Brazil
+    - Brunei
+    - Bulgaria
+    - Burkina
+    - Burundi
+    - Cambodia
+    - Cameroon
+    - Canada
+    - Cape Verde
+    - Central African Rep
+    - Chad
+    - Chile
+    - China
+    - Colombia
+    - Comoros
+    - Congo
+    - Congo
+    - Costa Rica
+    - Croatia
+    - Cuba
+    - Cyprus
+    - Czech Republic
+    - Denmark
+    - Djibouti
+    - Dominica
+    - Dominican Republic
+    - East Timor
+    - Ecuador
+    - Egypt
+    - El Salvador
+    - Equatorial Guinea
+    - Eritrea
+    - Estonia
+    - Ethiopia
+    - Fiji
+    - Finland
+    - France
+    - Gabon
+    - Gambia
+    - Georgia
+    - Germany
+    - Ghana
+    - Greece
+    - Grenada
+    - Guatemala
+    - Guinea
+    - Guinea-Bissau
+    - Guyana
+    - Haiti
+    - Honduras
+    - Hungary
+    - Iceland
+    - India
+    - Indonesia
+    - Iran
+    - Iraq
+    - Ireland
+    - Israel
+    - Italy
+    - Ivory Coast
+    - Jamaica
+    - Japan
+    - Jordan
+    - Kazakhstan
+    - Kenya
+    - Kiribati
+    - Korea North
+    - Korea South
+    - Kosovo
+    - Kuwait
+    - Kyrgyzstan
+    - Laos
+    - Latvia
+    - Lebanon
+    - Lesotho
+    - Liberia
+    - Libya
+    - Liechtenstein
+    - Lithuania
+    - Luxembourg
+    - Macedonia
+    - Madagascar
+    - Malawi
+    - Malaysia
+    - Maldives
+    - Mali
+    - Malta
+    - Marshall Islands
+    - Mauritania
+    - Mauritius
+    - Mexico
+    - Micronesia
+    - Moldova
+    - Monaco
+    - Mongolia
+    - Montenegro
+    - Morocco
+    - Mozambique
+    - Myanmar
+    - Namibia
+    - Nauru
+    - Nepal
+    - Netherlands
+    - New Zealand
+    - Nicaragua
+    - Niger
+    - Nigeria
+    - Norway
+    - Oman
+    - Pakistan
+    - Palau
+    - Panama
+    - Papua New Guinea
+    - Paraguay
+    - Peru
+    - Philippines
+    - Poland
+    - Portugal
+    - Qatar
+    - Romania
+    - Russian Federation
+    - Rwanda
+    - St Kitts & Nevis
+    - St Lucia
+    - Saint Vincent & the Grenadines
+    - Samoa
+    - San Marino
+    - Sao Tome & Principe
+    - Saudi Arabia
+    - Senegal
+    - Serbia
+    - Seychelles
+    - Sierra Leone
+    - Singapore
+    - Slovakia
+    - Slovenia
+    - Solomon Islands
+    - Somalia
+    - South Africa
+    - South Sudan
+    - Spain
+    - Sri Lanka
+    - Sudan
+    - Suriname
+    - Swaziland
+    - Sweden
+    - Switzerland
+    - Syria
+    - Taiwan
+    - Tajikistan
+    - Tanzania
+    - Thailand
+    - Togo
+    - Tonga
+    - Trinidad & Tobago
+    - Tunisia
+    - Turkey
+    - Turkmenistan
+    - Tuvalu
+    - Uganda
+    - Ukraine
+    - United Arab Emirates
+    - United Kingdom
+    - United States
+    - Uruguay
+    - Uzbekistan
+    - Vanuatu
+    - Vatican City
+    - Venezuela
+    - Vietnam
+    - Yemen
+    - Zambia
+    - Zimbabwe
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - whats up
+    - sup
+    - wassup
+    - hola
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: inform
+  examples: |
+    - my name is [shuja](PERSON)
+    - I am [justin](PERSON)
+    - [stshuja@gmail.com](mail)
+    - sure, my email id is [justin@yahoo.in](mail)
+    - my number is [8447397381](number)
+    - [jacob](PERSON)
+    - [jenny](PERSON)
+    - [john](PERSON)
+    - [Jerry](PERSON)
+    - [johnsson](PERSON)
+    - [james](PERSON)
+    - my contact details are [9111191111](number)
+    - [8447397380](number)
+    - [shuja](PERSON)
+    - [dwed@wew.com](mail)
+    - [8447397381](number)
+    - [tbygyg@jhu.com](mail)
+    - [8447397461](number)
+    - [wee@wep.com](mail)
+    - [dwd@tetr.com](mail)
+    - [8447397181](number)
+    - [vinay](PERSON)
+    - [zxcdw@er.com](mail)
+    - [1234567890](number)
+    - [ted](PERSON)
+    - [hdnaw@padlw.com](mail)
+    - [8447397381][{"entity": "number"}, {"entity": "number"}]
+    - [zed](PERSON)
+    - [zed@pgllkam.com](mail)
+    - [8447397381][{"entity": "number"}, {"entity": "number"}]
+    - I live in [Canada](GPE)
+    - I am living in [russia](GPE)
+    - [uae](GPE)
+    - [saudi arab](GPE)
+    - i am living in [USA](GPE)
+    - my country is [America](GPE)
+    - [olive@hotmail.co.uk](mail)
+    - [mason@hotmail.fr](mail)
+    - [howard@comcast.net](mail)
+    - [kai@gmx.de](mail)
+- intent: chitchat
+  examples: |
+    - 123
+    - what is going on
+    - ok what is the weather
+    - how are you
+    - lkaw@
+    - what is this
+    - who are you
+- intent: explain
+  examples: |
+    - Why do you need this information ?
+    - why do u need to know this ?
+    - why do i need to share my info ?
+    - why do u need my contact details ?
+    - why do you need my email id?
+    - is it necessary to give this info?
+    - why should i tell you this?
+    - what will you do with this information?
+    - why do u need my email
+    - why do u need this info
+# - intent: ask_smart_bi
+#   examples: |
+#     - [chart](bi)
+#     - [chart_controls](bi)
+#     - [card](bi)
+#     - [filters](bi)
+# #    - get me some info on [MDRM](service)
+# - intent: ask_smart_bi_etl
+#   examples: |
+#     - [grid_data](bi_etl)
+#     - [add_column](bi_etl)
+#     - [view](bi_etl)
+#     - [right_click](bi_etl)
+
+# - intent: inform_etl_choice
+#   examples: |
+#     - [jobs](etl)
+#     - [projects](etl)
+#     - [database](etl)
+#     - [cloud](etl)
+#     - [files](etl)
+#     - [sap](etl)
+#     - [denoise](etl)
+#     - [string_func](etl)
+#     - [numeric_func](etl)
+#     - [date_func](etl)
+#     - [analytic_func](etl)
+#     - [advanced_func](etl)
+#     - [debug](etl)
+#     - [workflow](etl)
+#     - [joblogs](etl)
+#     - [scheduling](etl)
+#     - [data_profiling](etl)
+#     - [smtp](etl)
+   
+- regex: number
+  examples: |
+    - \b[0-9]{10}\b

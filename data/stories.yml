@@ -1,0 +1,192 @@
+version: "3.1"
+
+stories:
+  
+# - story: User chooses to know about products
+#   steps: 
+#   - intent: inform_affirm
+#   - action: utter_pilog_services_and_products
+#   - intent: inform_products
+#   - action: utter_products
+  
+# - story: User chooses to know about services
+#   steps: 
+#   - intent: inform_affirm
+#   - action: utter_pilog_services_and_products
+#   - intent: inform_services
+#   - action: utter_services
+
+# - story: mail interjections
+#   steps:
+#   - intent: inform_form_details
+#   - action: utter_bot_will_ask
+#   - action: user_details_form
+#   - active_loop: user_details_form
+#   - slot_was_set:
+#     - requested_slot: email  
+#   - intent: explain
+#   - action: utter_explain_mail
+#   - action: user_details_form
+  
+# - story: contact interjections
+#   steps:
+#   - intent: inform_form_details
+#   - action: utter_bot_will_ask
+#   - action: user_details_form
+#   - active_loop: user_details_form
+#   - slot_was_set:
+#     - requested_slot: contact  
+#   - intent: explain
+#   - action: utter_explain_contact
+#   - action: user_details_form  
+
+  
+# - story: interactive_story_4
+#   steps:
+#   - intent: greet
+#   - action: utter_options
+#   - intent: inform_form_details
+#   - action: utter_bot_will_ask
+#   - action: user_details_form
+#   - active_loop: user_details_form
+#   - slot_was_set:
+#     - requested_slot: name
+#   - slot_was_set:
+#     - name: vinay
+#   - slot_was_set:
+#     - name: vinay
+#   - slot_was_set:
+#     - requested_slot: email
+#   - slot_was_set:
+#     - email: zxcdw@er.com
+#   - slot_was_set:
+#     - email: zxcdw@er.com
+#   - slot_was_set:
+#     - requested_slot: contact
+#   - slot_was_set:
+#     - contact: '1234567890'
+#   - slot_was_set:
+#     - contact: '1234567890'
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_confirm_details
+# # #   #- action: action_reset_all_slots
+#   - action: utter_yes_or_no_for_details
+# # #   - intent: inform_affirm
+# # #     entities:
+# # #     - resp: yes
+# # #   - action: utter_pilog_services_and_products
+# # #   - intent: inform_products
+# # #   - action: utter_products
+
+# - story: interactive_story_5
+#   steps:
+#   - intent: greet
+#   - action: utter_options
+#   - intent: inform_form_details
+#   - action: utter_bot_will_ask
+#   - action: user_details_form
+#   - active_loop: user_details_form
+#   - slot_was_set:
+#     - requested_slot: name
+#   - slot_was_set:
+#     - name: ted
+#   - slot_was_set:
+#     - name: ted
+#   - slot_was_set:
+#     - requested_slot: email
+#   - intent: explain
+#   - action: utter_explain_mail
+#   - action: user_details_form
+#   - slot_was_set:
+#     - requested_slot: email
+#   - slot_was_set:
+#     - email: hdnaw@padlw.com
+#   - slot_was_set:
+#     - email: hdnaw@padlw.com
+#   - slot_was_set:
+#     - requested_slot: contact
+#   - intent: explain
+#   - action: utter_explain_contact
+#   - action: user_details_form
+#   - slot_was_set:
+#     - requested_slot: contact
+#   - slot_was_set:
+#     - contact: '8447397381'
+#   - slot_was_set:
+#     - contact: '8447397381'
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_confirm_details
+# #   #- action: action_reset_all_slots
+#   - action: utter_yes_or_no_for_details
+# #   - intent: inform_affirm
+# #     entities:
+# #     - resp: yes
+# #   - action: utter_pilog_services_and_products
+# #   - intent: inform_products
+# #   - action: utter_products
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_options
+  - intent: inform_form_details
+  - action: utter_bot_will_ask
+  - action: user_details_form
+  - active_loop: user_details_form
+  - slot_was_set:
+    - requested_slot: name
+  - slot_was_set:
+    - name: zed
+  - slot_was_set:
+    - name: zed
+  - slot_was_set:
+    - requested_slot: email
+  - slot_was_set:
+    - email: zed@pgllkam.com
+  - slot_was_set:
+    - email: zed@pgllkam.com
+  - slot_was_set:
+    - requested_slot: GPE
+  - slot_was_set:
+    - GPE: uae
+  - slot_was_set:
+    - GPE: uae    
+  - slot_was_set:
+    - requested_slot: contact
+  - slot_was_set:
+    - contact: '8447397381'
+  - slot_was_set:
+    - contact: '8447397381'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_confirm_details
+  - action: utter_yes_or_no_for_details
+  - intent: inform_affirm
+    entities:
+    - resp: yes
+  - action: action_add_to_db
+  - action: utter_will_contact
+#   - action: utter_pilog_services_and_products
+#   - intent: inform_products
+#   - action: utter_products
+#   - intent: chitchat
+#   - action: action_custom_default_fallback
+#   - action: utter_correct_details
+- story: tell etl features
+  steps:
+  - intent: inform_etl
+  - action: utter_etl
+  - intent: inform_etl_choice
+  - action: action_tell_etl_choice
+  
+  
+
+  
+  
+  
+  

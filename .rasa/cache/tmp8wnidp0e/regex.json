@@ -1,0 +1,14 @@
+[
+  {
+    "name": "number",
+    "pattern": "\\b[0-9]{10}\\b"
+  },
+  {
+    "name": "service",
+    "pattern": "(\\bdata\\ harmonization\\b|\\bdata\\ analytics\\b|\\bdata\\ migration\\b|\\bdata\\ transformation\\b|\\bispir\\ management\\b|\\bdata\\ health\\ assessment\\b|\\bmanagement\\ consulting\\b)"
+  },
+  {
+    "name": "GPE",
+    "pattern": "(\\bUSA\\b|\\bAmerica\\b|\\bCanada\\b|\\bUae\\b|\\bUnited\\ Arab\\ Emirates\\b|\\bDubai\\b|\\bIndia\\b|\\bSouth\\ Africa\\b|\\bEngland\\b|\\bUk\\b|\\bRiyadh\\b)"
+  }
+]

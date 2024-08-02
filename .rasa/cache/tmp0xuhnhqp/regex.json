@@ -1,0 +1,10 @@
+[
+  {
+    "name": "number",
+    "pattern": "\\b[0-9]{10}\\b"
+  },
+  {
+    "name": "service",
+    "pattern": "(\\bdata\\ harmonization\\b|\\bdata\\ analytics\\b|\\bdata\\ migration\\b|\\bdata\\ transformation\\b|\\bMDRM\\b)"
+  }
+]

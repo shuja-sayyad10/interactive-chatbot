@@ -1,0 +1,289 @@
+version: '3.1'
+intents:
+- bot_challenge
+- chitchat
+- explain
+- greet
+- inform
+- inform_affirm
+- inform_deny
+- inform_form_details:
+    ignore_entities:
+      - etl
+      - bi
+      - bi_etl
+- inform_etl
+- inform_bi
+- inform_etl_and_bi
+- inform_etl_choice:
+    use_entities:
+      - etl
+- ask_smart_bi:
+    use_entities:
+      - bi
+- ask_smart_bi_etl:
+    use_entities:
+      - bi_etl
+# - inform_products
+# - inform_services
+# - ask_services:
+#     use_entities:
+#       - service
+# - inform_product_choice:
+#     ignore_entities:
+#       - PERSON
+
+      
+entities:
+- number
+- resp
+- PERSON
+- mail
+- GPE
+- etl
+- bi
+- bi_etl
+#- service
+#- product
+slots:
+  email:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: mail
+      conditions:
+      - active_loop: user_details_form
+        requested_slot: email
+  contact:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: user_details_form
+        requested_slot: contact
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: PERSON
+      conditions:
+      - active_loop: user_details_form
+        requested_slot: name
+  GPE:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: GPE
+      conditions:
+      - active_loop: user_details_form
+        requested_slot: GPE
+  etl:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: etl
+      intent: inform_etl_choice
+  bi:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: bi
+      intent: ask_smart_bi
+  bi_etl:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: bi_etl
+      intent: ask_smart_bi_etl      
+#   service:
+#     type: text
+#     influence_conversation: true
+#     mappings:
+#     - type: from_entity
+#       entity: service
+#       intent: ask_services      
+#   product:
+#     type: text
+#     influence_conversation: true
+#     mappings:
+#     - type: from_entity
+#       entity: product
+#       intent: inform_product_choice
+      
+  requested_slot:
+    type: categorical
+    values:
+    - name
+    - email
+    - GPE
+    - contact
+    influence_conversation: true
+    mappings:
+    - type: custom
+responses:
+  utter_greet:
+  - text: Welcome to PiLog !
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_name:
+  - text: Please provide your name
+  utter_ask_contact:
+  - text: Please provide your contact number(without country code)
+  utter_ask_email:
+  - text: Please provide your email id
+  utter_ask_GPE:
+  - text: Please provide your country name.
+  utter_confirm_details:
+  - text: 'Thanks {name}. Please confirm your details email: {email} mobile no.: {contact}'
+  utter_options:
+  - text: How may I help you ?
+    buttons:
+    - title: ETL #change
+      payload: /inform_etl
+    - title: Smart BI # change
+      payload: /inform_bi 
+    - title: Smart BI and ETL # change
+      payload: /inform_etl_and_bi      
+    - title: Contact Us
+      payload: /inform_form_details  
+  utter_bot_will_ask:
+  - text: I will ask for few details, please provide valid information.
+  utter_default:
+  - text: "I am sorry I did not get that."
+  utter_chitchat:
+  - text: cant help you with this right now,sorry!
+  utter_yes_or_no_for_details:
+  - text: Are your details correct ?
+    buttons:
+    - title: Yes
+      payload: /inform_affirm{{"resp":"yes"}}
+    - title: No
+      payload: /inform_deny{{"resp":"no"}}
+#   utter_pilog_services_and_products:
+#   - text: Pilog provides following products and services
+#     buttons:
+#     - title: Know our products
+#       payload: /inform_products
+#     - title: Know our services
+#       payload: /inform_services
+  utter_etl: # change
+  - text: ETL features
+    buttons:
+    - title: Jobs
+      payload: /inform_etl_choice{{"etl":"jobs"}} #change
+    - title: Projects
+      payload: /inform_etl_choice{{"etl":"projects"}}
+    - title: Database
+      payload: /inform_etl_choice{{"etl":"database"}}
+    - title: Cloud
+      payload: /inform_etl_choice{{"etl":"cloud"}}      
+    - title: Files
+      payload: /inform_etl_choice{{"etl":"files"}}
+#     - title: PiLog Preferred Ontology (PPO)
+#       payload: /inform_product_choice{{"product":"pilog preferred ontology"}}
+    - title: SAP
+      payload: /inform_etl_choice{{"etl":"sap"}}
+    - title: Denoise
+      payload: /inform_etl_choice{{"etl":"denoise"}}
+    - title: String/Char functions
+      payload: /inform_etl_choice{{"etl":"string_func"}}
+    - title: Numeric Math Functions
+      payload: /inform_etl_choice{{"etl":"numeric_func"}}
+    - title: Date/time Functions
+      payload: /inform_etl_choice{{"etl":"date_func"}}
+    - title: Analytic Functions
+      payload: /inform_etl_choice{{"etl":"analytic_func"}}
+    - title: Advanced Functions
+      payload: /inform_etl_choice{{"etl":"advanced_func"}}
+    - title: Debugging
+      payload: /inform_etl_choice{{"etl":"debug"}} 
+    - title: Work FLows
+      payload: /inform_etl_choice{{"etl":"workflow"}}
+    - title: Job Logs
+      payload: /inform_etl_choice{{"etl":"joblogs"}}
+    - title: Scheduling
+      payload: /inform_etl_choice{{"etl":"scheduling"}}
+    - title: Data Profiling
+      payload: /inform_etl_choice{{"etl":"data_profiling"}}
+    - title: SMTP Linking
+      payload: /inform_etl_choice{{"etl":"smtp"}}      
+      
+      
+      
+  utter_smart_bi: #change
+  - text: Smart BI features
+    buttons:
+    - title: Chart Types
+      payload: /ask_smart_bi{{"bi":"chart"}} #change
+    - title: Chart Controls and Add-on Features
+      payload: /ask_smart_bi{{"bi":"chart_controls"}}
+    - title: Card
+      payload: /ask_smart_bi{{"bi":"card"}}
+    - title: Filters
+      payload: /ask_smart_bi{{"bi":"filters"}}
+#     - title: iSPIR Management
+#       payload: /ask_services{{"service":"ispir management"}}
+#     - title: Data Health Assessment
+#       payload: /ask_services{{"service":"data health assessment"}}
+#     - title: Management Consulting
+#       payload: /ask_services{{"service":"management consulting"}}
+
+  utter_smart_bi_and_etl: #change
+  - text: Smart BI and ETL features
+    buttons:
+    - title: Transform on Grid Data
+      payload: /ask_smart_bi_etl{{"bi_etl":"grid_data"}} #change
+    - title: Add Column
+      payload: /ask_smart_bi_etl{{"bi_etl":"add_column"}}
+    - title: View
+      payload: /ask_smart_bi_etl{{"bi_etl":"view"}}
+    - title: Column Right Click Options
+      payload: /ask_smart_bi_etl{{"bi_etl":"right_click"}}
+      
+  utter_explain_mail:
+  - text: I need your email to get in touch with you via email.
+  utter_explain_contact:
+  - text: I need your contact details so we can contact you with additional info.
+  utter_correct_details:
+  - text: Please enter correct details.
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that."
+  utter_will_contact:
+  - text: "Thanks for sharing your details. We will get in touch soon."
+forms:
+  user_details_form:
+    required_slots:
+    - name
+    - email
+    - GPE
+    - contact
+actions:
+- action_custom_default_fallback
+- action_reset_all_slots
+- utter_bot_will_ask
+- utter_confirm_details
+- utter_correct_details
+- utter_explain_contact
+- utter_explain_mail
+- utter_options
+# - utter_products
+# - utter_services
+- utter_yes_or_no_for_details
+- validate_user_details_form
+- action_add_to_db
+# - action_tell_service_info
+# - action_tell_product_choice
+- action_tell_etl_choice
+- action_tell_bi_info
+- action_tell_etl_bi_choice
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
